@@ -11,11 +11,11 @@ function toPagination(arr, perPage, maxDataLength) {
         pageData.maxPage = Math.ceil(arr.length / maxDataLength)
 
         // set first index
-        if(perPage == 1) {
+        if (perPage == 1) {
             pageData.firstIndex = 0
         } else {
             let fIndex = (perPage * maxDataLength) - maxDataLength
-            if(fIndex < arr.length) {
+            if (fIndex < arr.length) {
                 pageData.firstIndex = (perPage * maxDataLength) - maxDataLength
             } else {
                 pageData.firstIndex = 0
@@ -25,9 +25,9 @@ function toPagination(arr, perPage, maxDataLength) {
         // set paginate data
         pageData.data = items.splice(pageData.firstIndex, maxDataLength)
 
-        return pageData
+        return Promise.resolve(pageData)
     } else {
-        return "Don't have all params data"
+        return Promise.reject({ message: "Don't have all params data" })
     }
 }
 
