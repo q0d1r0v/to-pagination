@@ -2,6 +2,7 @@
 function toPagination(arr, perPage, maxDataLength) {
     if (arr.length > 0 && perPage && maxDataLength) {
         // page data
+        let items = [...arr]
         let pageData = {}
 
         // set data
@@ -22,7 +23,7 @@ function toPagination(arr, perPage, maxDataLength) {
         }
 
         // set paginate data
-        pageData.data = arr.splice(pageData.firstIndex, maxDataLength)
+        pageData.data = items.splice(pageData.firstIndex, maxDataLength)
 
         return pageData
     } else {
