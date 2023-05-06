@@ -25,9 +25,9 @@ function toPagination(arr, perPage, maxDataLength) {
         // set paginate data
         pageData.data = items.splice(pageData.firstIndex, maxDataLength)
 
-        return Promise.resolve(pageData)
+        return new Promise.resolve(pageData)
     } else {
-        return Promise.reject({ message: "Don't have all params data" })
+        return new Promise.reject({ message: "Don't have all params data" })
     }
 }
 
