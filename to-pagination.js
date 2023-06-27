@@ -27,7 +27,7 @@ function toPagination(arr, perPage, maxDataLength) {
 
         return new Promise.resolve(pageData)
     } else {
-        return new Promise.reject({ message: "Don't have all params data" })
+        return new Promise.reject({ perPage: 1, maxDataLength: 0, maxPage: 1, data: [], message: "Don't have all params data!"})
     }
 }
 
