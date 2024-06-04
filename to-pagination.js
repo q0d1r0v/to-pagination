@@ -1,34 +1,23 @@
-// to pagination
-function toPagination(arr, perPage, maxDataLength) {
-    if (arr.length > 0 && perPage && maxDataLength) {
-        // page data
-        let items = [...arr]
-        let pageData = {}
+const ToPagination = (page_number, page_limit, data) => {
+  const items = [...data];
+  const last_page = Math.ceil(data.length / page_limit);
+  let page = ~~page_number;
 
-        // set data
-        pageData.perPage = perPage
-        pageData.maxDataLength = maxDataLength
-        pageData.maxPage = Math.ceil(arr.length / maxDataLength)
+  if (!page) {
+    page = 1;
+  }
 
-        // set first index
-        if (perPage == 1) {
-            pageData.firstIndex = 0
-        } else {
-            let fIndex = (perPage * maxDataLength) - maxDataLength
-            if (fIndex < arr.length) {
-                pageData.firstIndex = (perPage * maxDataLength) - maxDataLength
-            } else {
-                pageData.firstIndex = 0
-            }
-        }
+  if (page > last_page) {
+    page = last_page;
+  }
 
-        // set paginate data
-        pageData.data = items.splice(pageData.firstIndex, maxDataLength)
+  return {
+    page_number: page,
+    last_page,
+    data: items.slice(page * page_limit - page_limit, page * page_limit),
+  };
+};
 
-        return new Promise.resolve(pageData)
-    } else {
-        return new Promise.reject({ perPage: 1, maxDataLength: 0, maxPage: 1, data: [], message: "Don't have all params data!"})
-    }
-}
-
-module.exports = toPagination
+module.exports = {
+  ToPagination,
+};

@@ -2,19 +2,24 @@
 
 `npm i to-pagination`
 
+## Package <a id='ssFeatures' target="_blank" href="https://github.com/q0d1r0v/to-pagination">On Github</a>
+
 **Use package**
 
 ```
+
 // imports
-const toPagination = require('to-pagination') or import toPagination from 'to-pagination'
+const {ToPagination} = require('to-pagination') or import {ToPagination} from 'to-pagination'
 
 // data
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-// use with async and await
+// usage
+toPagination(page_number: number, page_limit: number, data: any[])
 
-const pagination = await toPagination(arr, 1, 10) // result { perPage: 1, maxDataLength: 10, maxPage: 2, firstIndex: 0, data: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] }
+// for example
+const pagination = ToPagination(1, page_limit, data)
 
-// toPagination(arr, perPage, maxDataLength)
 ```
+
 # to-pagination
